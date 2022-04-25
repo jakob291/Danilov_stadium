@@ -1,0 +1,16 @@
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\Danilov_stadium.exe.config
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\Danilov_stadium.exe
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\Danilov_stadium.pdb
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\EntityFramework.dll
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\EntityFramework.xml
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jakob\source\repos\Danilov_stadium\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.Properties.Resources.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.csproj.GenerateResource.cache
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.csproj.CoreCompileInputs.cache
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.csproj.CopyComplete
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.exe
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.pdb
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.staffEditForm.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.teamsEditForm.resources

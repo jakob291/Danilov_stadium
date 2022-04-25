@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище danilov_stadiumModelContainer" CdmEntityContainer="danilov_stadiumEntities">
+    <EntitySetMapping Name="event_types">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.event_types">
+        <MappingFragment StoreEntitySet="event_types">
+          <ScalarProperty Name="event_type_id" ColumnName="event_type_id" />
+          <ScalarProperty Name="event_type_name" ColumnName="event_type_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="team_id" ColumnName="team_id" />
+          <ScalarProperty Name="is_head" ColumnName="is_head" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teams">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.teams">
+        <MappingFragment StoreEntitySet="teams">
+          <ScalarProperty Name="team_name" ColumnName="team_name" />
+          <ScalarProperty Name="team_id" ColumnName="team_id" />
+          <ScalarProperty Name="emblem" ColumnName="emblem" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="event_statuses">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.event_statuses">
+        <MappingFragment StoreEntitySet="event_statuses">
+          <ScalarProperty Name="winner" ColumnName="winner" />
+          <ScalarProperty Name="participant2" ColumnName="participant2" />
+          <ScalarProperty Name="participant1" ColumnName="participant1" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="status_record_id" ColumnName="status_record_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="events">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.events">
+        <MappingFragment StoreEntitySet="events">
+          <ScalarProperty Name="staff_set_id" ColumnName="staff_set_id" />
+          <ScalarProperty Name="original_event_id" ColumnName="original_event_id" />
+          <ScalarProperty Name="end_dt" ColumnName="end_dt" />
+          <ScalarProperty Name="start_dt" ColumnName="start_dt" />
+          <ScalarProperty Name="event_type_id" ColumnName="event_type_id" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="staff_sets">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.staff_sets">
+        <MappingFragment StoreEntitySet="staff_sets">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+          <ScalarProperty Name="event_id" ColumnName="event_id" />
+          <ScalarProperty Name="record_id" ColumnName="record_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statuses">
+      <EntityTypeMapping TypeName="danilov_stadiumModel.statuses">
+        <MappingFragment StoreEntitySet="statuses">
+          <ScalarProperty Name="status_name" ColumnName="status_name" />
+          <ScalarProperty Name="status_id" ColumnName="status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

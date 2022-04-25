@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище danilov_stadiumModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="event_statuses">
+    <Key>
+      <PropertyRef Name="status_record_id" />
+    </Key>
+    <Property Name="status_record_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="event_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="status_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="participant1" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="participant2" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="winner" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="event_types">
+    <Key>
+      <PropertyRef Name="event_type_id" />
+    </Key>
+    <Property Name="event_type_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="event_type_name" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="events">
+    <Key>
+      <PropertyRef Name="event_id" />
+    </Key>
+    <Property Name="event_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="event_type_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="start_dt" Type="datetime" Nullable="false" />
+    <Property Name="end_dt" Type="datetime" Nullable="false" />
+    <Property Name="original_event_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="staff_set_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="staff_id" />
+    </Key>
+    <Property Name="staff_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="team_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="is_head" Type="bit" Nullable="false" />
+    <Property Name="role_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="staff_sets">
+    <Key>
+      <PropertyRef Name="record_id" />
+    </Key>
+    <Property Name="record_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="event_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="staff_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="statuses">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="teams">
+    <Key>
+      <PropertyRef Name="team_id" />
+    </Key>
+    <Property Name="team_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="team_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emblem" Type="nvarchar(max)" />
+    <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_event_statuses_statuses">
+    <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
+    <End Role="event_statuses" Type="Self.event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams">
+    <End Role="teams" Type="Self.teams" Multiplicity="0..1" />
+    <End Role="event_statuses" Type="Self.event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="participant1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams1">
+    <End Role="teams" Type="Self.teams" Multiplicity="0..1" />
+    <End Role="event_statuses" Type="Self.event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="participant2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams2">
+    <End Role="teams" Type="Self.teams" Multiplicity="0..1" />
+    <End Role="event_statuses" Type="Self.event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="winner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_events_event_types">
+    <End Role="event_types" Type="Self.event_types" Multiplicity="1" />
+    <End Role="events" Type="Self.events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="event_types">
+        <PropertyRef Name="event_type_id" />
+      </Principal>
+      <Dependent Role="events">
+        <PropertyRef Name="event_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="staff">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_sets_events">
+    <End Role="events" Type="Self.events" Multiplicity="1" />
+    <End Role="staff_sets" Type="Self.staff_sets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="events">
+        <PropertyRef Name="event_id" />
+      </Principal>
+      <Dependent Role="staff_sets">
+        <PropertyRef Name="event_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_sets_staff">
+    <End Role="staff" Type="Self.staff" Multiplicity="1" />
+    <End Role="staff_sets" Type="Self.staff_sets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="staff_id" />
+      </Principal>
+      <Dependent Role="staff_sets">
+        <PropertyRef Name="staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище danilov_stadiumModelContainer">
+    <EntitySet Name="event_statuses" EntityType="Self.event_statuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="event_types" EntityType="Self.event_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="events" EntityType="Self.events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="staff_sets" EntityType="Self.staff_sets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statuses" EntityType="Self.statuses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="teams" EntityType="Self.teams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_event_statuses_statuses" Association="Self.FK_event_statuses_statuses">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams" Association="Self.FK_event_statuses_teams">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams1" Association="Self.FK_event_statuses_teams1">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams2" Association="Self.FK_event_statuses_teams2">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_events_event_types" Association="Self.FK_events_event_types">
+      <End Role="event_types" EntitySet="event_types" />
+      <End Role="events" EntitySet="events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_roles" Association="Self.FK_staff_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="staff" EntitySet="staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_sets_events" Association="Self.FK_staff_sets_events">
+      <End Role="events" EntitySet="events" />
+      <End Role="staff_sets" EntitySet="staff_sets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_sets_staff" Association="Self.FK_staff_sets_staff">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="staff_sets" EntitySet="staff_sets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

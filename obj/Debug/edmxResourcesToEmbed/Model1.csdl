@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="danilov_stadiumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="event_types">
+    <Key>
+      <PropertyRef Name="event_type_id" />
+    </Key>
+    <Property Name="event_type_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_type_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="events" Relationship="danilov_stadiumModel.FK_events_event_types" FromRole="event_types" ToRole="events" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="staff" Relationship="Self.FK_staff_roles" FromRole="roles" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="staff_id" />
+    </Key>
+    <Property Name="staff_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="team_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="is_head" Type="Boolean" Nullable="false" />
+    <Property Name="role_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="roles" Relationship="Self.FK_staff_roles" FromRole="staff" ToRole="roles" />
+    <NavigationProperty Name="staff_sets" Relationship="danilov_stadiumModel.FK_staff_sets_staff" FromRole="staff" ToRole="staff_sets" />
+  </EntityType>
+  <EntityType Name="teams">
+    <Key>
+      <PropertyRef Name="team_id" />
+    </Key>
+    <Property Name="team_id" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emblem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="team_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="event_statuses" Relationship="danilov_stadiumModel.FK_event_statuses_teams" FromRole="teams" ToRole="event_statuses" />
+    <NavigationProperty Name="event_statuses1" Relationship="danilov_stadiumModel.FK_event_statuses_teams1" FromRole="teams" ToRole="event_statuses" />
+    <NavigationProperty Name="event_statuses2" Relationship="danilov_stadiumModel.FK_event_statuses_teams2" FromRole="teams" ToRole="event_statuses" />
+  </EntityType>
+  <Association Name="FK_staff_roles">
+    <End Role="roles" Type="Self.roles" Multiplicity="1" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="roles">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="staff">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="danilov_stadiumEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="event_types" EntityType="Self.event_types" />
+    <EntitySet Name="roles" EntityType="Self.roles" />
+    <EntitySet Name="staff" EntityType="Self.staff" />
+    <EntitySet Name="teams" EntityType="Self.teams" />
+    <AssociationSet Name="FK_staff_roles" Association="Self.FK_staff_roles">
+      <End Role="roles" EntitySet="roles" />
+      <End Role="staff" EntitySet="staff" />
+    </AssociationSet>
+    <EntitySet Name="event_statuses" EntityType="danilov_stadiumModel.event_statuses" />
+    <EntitySet Name="events" EntityType="danilov_stadiumModel.events" />
+    <EntitySet Name="staff_sets" EntityType="danilov_stadiumModel.staff_sets" />
+    <EntitySet Name="statuses" EntityType="danilov_stadiumModel.statuses" />
+    <AssociationSet Name="FK_event_statuses_statuses" Association="danilov_stadiumModel.FK_event_statuses_statuses">
+      <End Role="statuses" EntitySet="statuses" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams" Association="danilov_stadiumModel.FK_event_statuses_teams">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams1" Association="danilov_stadiumModel.FK_event_statuses_teams1">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_event_statuses_teams2" Association="danilov_stadiumModel.FK_event_statuses_teams2">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="event_statuses" EntitySet="event_statuses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_events_event_types" Association="danilov_stadiumModel.FK_events_event_types">
+      <End Role="event_types" EntitySet="event_types" />
+      <End Role="events" EntitySet="events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_sets_events" Association="danilov_stadiumModel.FK_staff_sets_events">
+      <End Role="events" EntitySet="events" />
+      <End Role="staff_sets" EntitySet="staff_sets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_sets_staff" Association="danilov_stadiumModel.FK_staff_sets_staff">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="staff_sets" EntitySet="staff_sets" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="event_statuses">
+    <Key>
+      <PropertyRef Name="status_record_id" />
+    </Key>
+    <Property Name="status_record_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="status_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="participant1" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="participant2" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="winner" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="statuses" Relationship="danilov_stadiumModel.FK_event_statuses_statuses" FromRole="event_statuses" ToRole="statuses" />
+    <NavigationProperty Name="teams" Relationship="danilov_stadiumModel.FK_event_statuses_teams" FromRole="event_statuses" ToRole="teams" />
+    <NavigationProperty Name="teams1" Relationship="danilov_stadiumModel.FK_event_statuses_teams1" FromRole="event_statuses" ToRole="teams" />
+    <NavigationProperty Name="teams2" Relationship="danilov_stadiumModel.FK_event_statuses_teams2" FromRole="event_statuses" ToRole="teams" />
+  </EntityType>
+  <EntityType Name="events">
+    <Key>
+      <PropertyRef Name="event_id" />
+    </Key>
+    <Property Name="event_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_type_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="start_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_dt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="original_event_id" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="staff_set_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <NavigationProperty Name="event_types" Relationship="danilov_stadiumModel.FK_events_event_types" FromRole="events" ToRole="event_types" />
+    <NavigationProperty Name="staff_sets" Relationship="danilov_stadiumModel.FK_staff_sets_events" FromRole="events" ToRole="staff_sets" />
+  </EntityType>
+  <EntityType Name="staff_sets">
+    <Key>
+      <PropertyRef Name="record_id" />
+    </Key>
+    <Property Name="record_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="event_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="staff_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="events" Relationship="danilov_stadiumModel.FK_staff_sets_events" FromRole="staff_sets" ToRole="events" />
+    <NavigationProperty Name="staff" Relationship="danilov_stadiumModel.FK_staff_sets_staff" FromRole="staff_sets" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="statuses">
+    <Key>
+      <PropertyRef Name="status_id" />
+    </Key>
+    <Property Name="status_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="event_statuses" Relationship="danilov_stadiumModel.FK_event_statuses_statuses" FromRole="statuses" ToRole="event_statuses" />
+  </EntityType>
+  <Association Name="FK_event_statuses_statuses">
+    <End Type="danilov_stadiumModel.statuses" Role="statuses" Multiplicity="0..1" />
+    <End Type="danilov_stadiumModel.event_statuses" Role="event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuses">
+        <PropertyRef Name="status_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams">
+    <End Type="danilov_stadiumModel.teams" Role="teams" Multiplicity="0..1" />
+    <End Type="danilov_stadiumModel.event_statuses" Role="event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="participant1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams1">
+    <End Type="danilov_stadiumModel.teams" Role="teams" Multiplicity="0..1" />
+    <End Type="danilov_stadiumModel.event_statuses" Role="event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="participant2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_event_statuses_teams2">
+    <End Type="danilov_stadiumModel.teams" Role="teams" Multiplicity="0..1" />
+    <End Type="danilov_stadiumModel.event_statuses" Role="event_statuses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="event_statuses">
+        <PropertyRef Name="winner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_events_event_types">
+    <End Type="danilov_stadiumModel.event_types" Role="event_types" Multiplicity="1" />
+    <End Type="danilov_stadiumModel.events" Role="events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="event_types">
+        <PropertyRef Name="event_type_id" />
+      </Principal>
+      <Dependent Role="events">
+        <PropertyRef Name="event_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_sets_events">
+    <End Type="danilov_stadiumModel.events" Role="events" Multiplicity="1" />
+    <End Type="danilov_stadiumModel.staff_sets" Role="staff_sets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="events">
+        <PropertyRef Name="event_id" />
+      </Principal>
+      <Dependent Role="staff_sets">
+        <PropertyRef Name="event_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_staff_sets_staff">
+    <End Type="danilov_stadiumModel.staff" Role="staff" Multiplicity="1" />
+    <End Type="danilov_stadiumModel.staff_sets" Role="staff_sets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="staff_id" />
+      </Principal>
+      <Dependent Role="staff_sets">
+        <PropertyRef Name="staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
