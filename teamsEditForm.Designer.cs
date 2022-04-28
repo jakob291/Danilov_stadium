@@ -34,9 +34,9 @@
             System.Windows.Forms.Label emblemLabel;
             System.Windows.Forms.Label team_nameLabel;
             this.cityTextBox = new System.Windows.Forms.TextBox();
+            this.teamsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.countryTextBox = new System.Windows.Forms.TextBox();
             this.emblemTextBox = new System.Windows.Forms.TextBox();
-            this.teamsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.team_nameTextBox = new System.Windows.Forms.TextBox();
             cityLabel = new System.Windows.Forms.Label();
             countryLabel = new System.Windows.Forms.Label();
@@ -54,14 +54,6 @@
             cityLabel.TabIndex = 1;
             cityLabel.Text = "city:";
             // 
-            // cityTextBox
-            // 
-            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "city", true));
-            this.cityTextBox.Location = new System.Drawing.Point(112, 119);
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(100, 22);
-            this.cityTextBox.TabIndex = 2;
-            // 
             // countryLabel
             // 
             countryLabel.AutoSize = true;
@@ -71,34 +63,14 @@
             countryLabel.TabIndex = 3;
             countryLabel.Text = "country:";
             // 
-            // countryTextBox
-            // 
-            this.countryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "country", true));
-            this.countryTextBox.Location = new System.Drawing.Point(112, 147);
-            this.countryTextBox.Name = "countryTextBox";
-            this.countryTextBox.Size = new System.Drawing.Size(100, 22);
-            this.countryTextBox.TabIndex = 4;
-            // 
             // emblemLabel
             // 
             emblemLabel.AutoSize = true;
-            emblemLabel.Location = new System.Drawing.Point(24, 178);
+            emblemLabel.Location = new System.Drawing.Point(307, 89);
             emblemLabel.Name = "emblemLabel";
             emblemLabel.Size = new System.Drawing.Size(61, 17);
             emblemLabel.TabIndex = 5;
             emblemLabel.Text = "emblem:";
-            // 
-            // emblemTextBox
-            // 
-            this.emblemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "emblem", true));
-            this.emblemTextBox.Location = new System.Drawing.Point(112, 175);
-            this.emblemTextBox.Name = "emblemTextBox";
-            this.emblemTextBox.Size = new System.Drawing.Size(100, 22);
-            this.emblemTextBox.TabIndex = 6;
-            // 
-            // teamsBindingSource
-            // 
-            this.teamsBindingSource.DataSource = typeof(Danilov_stadium.teams);
             // 
             // team_nameLabel
             // 
@@ -108,6 +80,34 @@
             team_nameLabel.Size = new System.Drawing.Size(82, 17);
             team_nameLabel.TabIndex = 8;
             team_nameLabel.Text = "team name:";
+            // 
+            // cityTextBox
+            // 
+            this.cityTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "city", true));
+            this.cityTextBox.Location = new System.Drawing.Point(112, 119);
+            this.cityTextBox.Name = "cityTextBox";
+            this.cityTextBox.Size = new System.Drawing.Size(100, 22);
+            this.cityTextBox.TabIndex = 2;
+            // 
+            // teamsBindingSource
+            // 
+            this.teamsBindingSource.DataSource = typeof(Danilov_stadium.teams);
+            // 
+            // countryTextBox
+            // 
+            this.countryTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "country", true));
+            this.countryTextBox.Location = new System.Drawing.Point(112, 147);
+            this.countryTextBox.Name = "countryTextBox";
+            this.countryTextBox.Size = new System.Drawing.Size(100, 22);
+            this.countryTextBox.TabIndex = 4;
+            // 
+            // emblemTextBox
+            // 
+            this.emblemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "emblem", true));
+            this.emblemTextBox.Location = new System.Drawing.Point(288, 122);
+            this.emblemTextBox.Name = "emblemTextBox";
+            this.emblemTextBox.Size = new System.Drawing.Size(100, 22);
+            this.emblemTextBox.TabIndex = 6;
             // 
             // team_nameTextBox
             // 
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(465, 255);
             this.Controls.Add(team_nameLabel);
             this.Controls.Add(this.team_nameTextBox);
             this.Controls.Add(cityLabel);
