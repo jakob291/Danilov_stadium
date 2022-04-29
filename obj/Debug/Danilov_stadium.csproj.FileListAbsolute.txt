@@ -14,5 +14,5 @@ C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.exe
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.pdb
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.staffEditForm.resources
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.teamsEditForm.resources
-C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.csprojAssemblyReference.cache
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.StaffListForm.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.Form1.resources
