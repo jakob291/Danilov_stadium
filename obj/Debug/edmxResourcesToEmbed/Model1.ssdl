@@ -22,12 +22,12 @@
     <Key>
       <PropertyRef Name="event_id" />
     </Key>
-    <Property Name="event_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="event_type_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="start_dt" Type="datetime" Nullable="false" />
     <Property Name="end_dt" Type="datetime" Nullable="false" />
     <Property Name="original_event_id" Type="numeric" Precision="18" Scale="0" />
-    <Property Name="staff_set_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="staff_set_id" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="event_id" Type="numeric" Precision="30" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="roles">
     <Key>
@@ -52,9 +52,9 @@
       <PropertyRef Name="record_id" />
     </Key>
     <Property Name="record_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="event_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="staff_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="event_id" Type="numeric" Precision="30" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="statuses">
     <Key>
@@ -69,9 +69,9 @@
     </Key>
     <Property Name="team_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="team_name" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="emblem" Type="nvarchar(max)" />
     <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="emblem" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_event_statuses_statuses">
     <End Role="statuses" Type="Self.statuses" Multiplicity="0..1" />
@@ -169,6 +169,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_staff_teams">
+    <End Role="teams" Type="Self.teams" Multiplicity="0..1" />
+    <End Role="staff" Type="Self.staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="teams">
+        <PropertyRef Name="team_id" />
+      </Principal>
+      <Dependent Role="staff">
+        <PropertyRef Name="team_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetNextSequenceValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="Хранилище danilov_stadiumModelContainer">
     <EntitySet Name="event_statuses" EntityType="Self.event_statuses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="event_types" EntityType="Self.event_types" Schema="dbo" store:Type="Tables" />
@@ -209,6 +222,10 @@
     <AssociationSet Name="FK_staff_sets_staff" Association="Self.FK_staff_sets_staff">
       <End Role="staff" EntitySet="staff" />
       <End Role="staff_sets" EntitySet="staff_sets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_staff_teams" Association="Self.FK_staff_teams">
+      <End Role="teams" EntitySet="teams" />
+      <End Role="staff" EntitySet="staff" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

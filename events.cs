@@ -20,12 +20,12 @@ namespace Danilov_stadium
             this.staff_sets = new HashSet<staff_sets>();
         }
     
-        public decimal event_id { get; set; }
         public decimal event_type_id { get; set; }
         public System.DateTime start_dt { get; set; }
         public System.DateTime end_dt { get; set; }
         public Nullable<decimal> original_event_id { get; set; }
-        public decimal staff_set_id { get; set; }
+        public Nullable<decimal> staff_set_id { get; set; }
+        public decimal event_id { get; set; }
     
         public virtual event_types event_types { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

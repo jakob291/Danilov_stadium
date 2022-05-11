@@ -4,20 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5fe799a8f52d421288a304b4ee0c9e32" Name="Diagram1">
+      <Diagram DiagramId="5fe799a8f52d421288a304b4ee0c9e32" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="danilov_stadiumModel.event_types" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="danilov_stadiumModel.roles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="danilov_stadiumModel.roles" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="danilov_stadiumModel.staff" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="danilov_stadiumModel.teams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="danilov_stadiumModel.FK_staff_roles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="danilov_stadiumModel.event_statuses" Width="1.5" PointX="5" PointY="4.5" />
-        <EntityTypeShape EntityType="danilov_stadiumModel.events" Width="1.5" PointX="3" PointY="11" />
-        <EntityTypeShape EntityType="danilov_stadiumModel.staff_sets" Width="1.5" PointX="5.25" PointY="1.25" />
         <EntityTypeShape EntityType="danilov_stadiumModel.statuses" Width="1.5" PointX="2.75" PointY="8.25" />
         <AssociationConnector Association="danilov_stadiumModel.FK_event_statuses_statuses" />
+        <EntityTypeShape EntityType="danilov_stadiumModel.teams" Width="1.5" PointX="8.125" PointY="1.625" />
         <AssociationConnector Association="danilov_stadiumModel.FK_event_statuses_teams" />
         <AssociationConnector Association="danilov_stadiumModel.FK_event_statuses_teams1" />
         <AssociationConnector Association="danilov_stadiumModel.FK_event_statuses_teams2" />
+        <AssociationConnector Association="danilov_stadiumModel.FK_staff_teams" />
+        <EntityTypeShape EntityType="danilov_stadiumModel.events" Width="1.5" PointX="3" PointY="11.125" />
+        <EntityTypeShape EntityType="danilov_stadiumModel.staff_sets" Width="1.5" PointX="5.25" PointY="1.25" />
         <AssociationConnector Association="danilov_stadiumModel.FK_events_event_types" />
         <AssociationConnector Association="danilov_stadiumModel.FK_staff_sets_events" />
         <AssociationConnector Association="danilov_stadiumModel.FK_staff_sets_staff" />

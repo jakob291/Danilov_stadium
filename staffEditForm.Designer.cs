@@ -34,6 +34,7 @@
             System.Windows.Forms.Label last_nameLabel;
             System.Windows.Forms.Label role_idLabel;
             System.Windows.Forms.Label team_idLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(staffEditForm));
             this.first_nameTextBox = new System.Windows.Forms.TextBox();
             this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.is_headCheckBox = new System.Windows.Forms.CheckBox();
@@ -57,7 +58,7 @@
             // first_nameLabel
             // 
             first_nameLabel.AutoSize = true;
-            first_nameLabel.Location = new System.Drawing.Point(18, 17);
+            first_nameLabel.Location = new System.Drawing.Point(18, 37);
             first_nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             first_nameLabel.Name = "first_nameLabel";
             first_nameLabel.Size = new System.Drawing.Size(29, 13);
@@ -67,7 +68,7 @@
             // is_headLabel
             // 
             is_headLabel.AutoSize = true;
-            is_headLabel.Location = new System.Drawing.Point(18, 41);
+            is_headLabel.Location = new System.Drawing.Point(18, 65);
             is_headLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             is_headLabel.Name = "is_headLabel";
             is_headLabel.Size = new System.Drawing.Size(79, 13);
@@ -77,7 +78,7 @@
             // last_nameLabel
             // 
             last_nameLabel.AutoSize = true;
-            last_nameLabel.Location = new System.Drawing.Point(18, 64);
+            last_nameLabel.Location = new System.Drawing.Point(18, 13);
             last_nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             last_nameLabel.Name = "last_nameLabel";
             last_nameLabel.Size = new System.Drawing.Size(56, 13);
@@ -107,7 +108,7 @@
             // first_nameTextBox
             // 
             this.first_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.staffBindingSource, "first_name", true));
-            this.first_nameTextBox.Location = new System.Drawing.Point(127, 17);
+            this.first_nameTextBox.Location = new System.Drawing.Point(127, 34);
             this.first_nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.first_nameTextBox.Name = "first_nameTextBox";
             this.first_nameTextBox.Size = new System.Drawing.Size(100, 20);
@@ -120,7 +121,7 @@
             // is_headCheckBox
             // 
             this.is_headCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.staffBindingSource, "is_head", true));
-            this.is_headCheckBox.Location = new System.Drawing.Point(127, 40);
+            this.is_headCheckBox.Location = new System.Drawing.Point(127, 64);
             this.is_headCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.is_headCheckBox.Name = "is_headCheckBox";
             this.is_headCheckBox.Size = new System.Drawing.Size(78, 20);
@@ -131,22 +132,23 @@
             // last_nameTextBox
             // 
             this.last_nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.staffBindingSource, "last_name", true));
-            this.last_nameTextBox.Location = new System.Drawing.Point(127, 64);
+            this.last_nameTextBox.Location = new System.Drawing.Point(127, 10);
             this.last_nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.last_nameTextBox.Name = "last_nameTextBox";
             this.last_nameTextBox.Size = new System.Drawing.Size(100, 20);
-            this.last_nameTextBox.TabIndex = 6;
+            this.last_nameTextBox.TabIndex = 1;
             // 
             // role_nameComboBox
             // 
             this.role_nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.rolesBindingSource, "role_name", true));
             this.role_nameComboBox.DataSource = this.rolesBindingSource;
             this.role_nameComboBox.DisplayMember = "role_name";
+            this.role_nameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.role_nameComboBox.FormattingEnabled = true;
             this.role_nameComboBox.Location = new System.Drawing.Point(127, 89);
             this.role_nameComboBox.Name = "role_nameComboBox";
             this.role_nameComboBox.Size = new System.Drawing.Size(100, 21);
-            this.role_nameComboBox.TabIndex = 10;
+            this.role_nameComboBox.TabIndex = 5;
             this.role_nameComboBox.ValueMember = "role_id";
             this.role_nameComboBox.SelectedIndexChanged += new System.EventHandler(this.Role_nameComboBox_SelectedIndexChanged);
             // 
@@ -159,7 +161,7 @@
             this.bt_save.Location = new System.Drawing.Point(12, 156);
             this.bt_save.Name = "bt_save";
             this.bt_save.Size = new System.Drawing.Size(75, 23);
-            this.bt_save.TabIndex = 12;
+            this.bt_save.TabIndex = 7;
             this.bt_save.Text = "Сохранить";
             this.bt_save.UseVisualStyleBackColor = true;
             this.bt_save.Click += new System.EventHandler(this.Bt_save_Click);
@@ -169,21 +171,24 @@
             this.bt_cancel.Location = new System.Drawing.Point(152, 156);
             this.bt_cancel.Name = "bt_cancel";
             this.bt_cancel.Size = new System.Drawing.Size(75, 23);
-            this.bt_cancel.TabIndex = 12;
+            this.bt_cancel.TabIndex = 8;
             this.bt_cancel.Text = "Отмена";
             this.bt_cancel.UseVisualStyleBackColor = true;
+            this.bt_cancel.Click += new System.EventHandler(this.Bt_cancel_Click);
             // 
             // team_nameComboBox
             // 
             this.team_nameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teamsBindingSource, "team_name", true));
             this.team_nameComboBox.DataSource = this.teamsBindingSource;
             this.team_nameComboBox.DisplayMember = "team_name";
+            this.team_nameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.team_nameComboBox.FormattingEnabled = true;
             this.team_nameComboBox.Location = new System.Drawing.Point(127, 115);
             this.team_nameComboBox.Name = "team_nameComboBox";
             this.team_nameComboBox.Size = new System.Drawing.Size(100, 21);
-            this.team_nameComboBox.TabIndex = 13;
+            this.team_nameComboBox.TabIndex = 6;
             this.team_nameComboBox.ValueMember = "team_id";
+            this.team_nameComboBox.SelectedIndexChanged += new System.EventHandler(this.Team_nameComboBox_SelectedIndexChanged);
             // 
             // teamsBindingSource
             // 
@@ -193,7 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(255, 199);
+            this.ClientSize = new System.Drawing.Size(255, 206);
             this.Controls.Add(this.team_nameComboBox);
             this.Controls.Add(this.bt_cancel);
             this.Controls.Add(this.bt_save);
@@ -206,9 +211,10 @@
             this.Controls.Add(this.last_nameTextBox);
             this.Controls.Add(role_idLabel);
             this.Controls.Add(team_idLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "staffEditForm";
-            this.Text = "staffEditForm";
+            this.Text = "Редактор персонала";
             this.Load += new System.EventHandler(this.StaffEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rolesBindingSource)).EndInit();

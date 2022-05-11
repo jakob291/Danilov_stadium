@@ -20,13 +20,14 @@ namespace Danilov_stadium
             this.event_statuses = new HashSet<event_statuses>();
             this.event_statuses1 = new HashSet<event_statuses>();
             this.event_statuses2 = new HashSet<event_statuses>();
+            this.staff = new HashSet<staff>();
         }
     
         public decimal team_id { get; set; }
-        public string emblem { get; set; }
+        public string team_name { get; set; }
         public string country { get; set; }
         public string city { get; set; }
-        public string team_name { get; set; }
+        public byte[] emblem { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<event_statuses> event_statuses { get; set; }
@@ -34,5 +35,7 @@ namespace Danilov_stadium
         public virtual ICollection<event_statuses> event_statuses1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<event_statuses> event_statuses2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<staff> staff { get; set; }
     }
 }

@@ -15,9 +15,9 @@ namespace Danilov_stadium
     public partial class staff_sets
     {
         public decimal record_id { get; set; }
-        public decimal event_id { get; set; }
         public decimal staff_id { get; set; }
         public System.DateTime created_at { get; set; }
+        public decimal event_id { get; set; }
     
         public virtual events events { get; set; }
         public virtual staff staff { get; set; }

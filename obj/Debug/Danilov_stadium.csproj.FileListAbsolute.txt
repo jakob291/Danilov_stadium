@@ -15,4 +15,10 @@ C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.pdb
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.staffEditForm.resources
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.teamsEditForm.resources
 C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.StaffListForm.resources
-C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.Form1.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.roles_evtypes_edit.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.TeamsList.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.EventEditForm.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.EventEditForm2.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.CalendarForm.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.EventResultForm.resources
+C:\Users\jakob\source\repos\Danilov_stadium\obj\Debug\Danilov_stadium.csprojAssemblyReference.cache

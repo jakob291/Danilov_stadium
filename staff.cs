@@ -28,6 +28,7 @@ namespace Danilov_stadium
         public decimal role_id { get; set; }
     
         public virtual roles roles { get; set; }
+        public virtual teams teams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<staff_sets> staff_sets { get; set; }
     }

@@ -16,18 +16,24 @@ namespace Danilov_stadium
         public StaffListForm()
         {
             InitializeComponent();
-            db = new danilov_stadiumEntities();
         }
 
         private void StaffListForm_Load(object sender, EventArgs e)
         {
-            DGV_Staff.DataSource = db.staff.ToList();
+            FillDGV();
+        }
+
+        private void FillDGV()
+        {
+            staffBindingSource.DataSource = null;
+            db = new danilov_stadiumEntities();
+            staffBindingSource.DataSource = db.staff.ToList();
             foreach (DataGridViewRow rw in DGV_Staff.Rows)
             {
                 decimal roleID = (decimal)(rw.Cells["role_id"].Value);
                 decimal teamID = rw.Cells["team_id"].Value != null ? (decimal)(rw.Cells["team_id"].Value) : -1;
-                rw.Cells["role"].Value = db.roles.Where(rl => rl.role_id == roleID).FirstOrDefault().role_name;
-                rw.Cells["team"].Value = teamID != -1 ? db.teams.Where(tm => tm.team_id == teamID).FirstOrDefault().team_name : "";
+                rw.Cells["role"].Value = db.roles.Where(rl => rl.role_id == roleID).First().role_name;
+                rw.Cells["team"].Value = teamID != -1 ? db.teams.Where(tm => tm.team_id == teamID).First().team_name : "";
             }
         }
 
@@ -35,11 +41,8 @@ namespace Danilov_stadium
         {
             staff st = (staff)staffBindingSource.Current;
             staffEditForm sef = new staffEditForm(db, st);
-            if (sef.ShowDialog() == DialogResult.OK)
-            {
-                DGV_Staff.DataSource = null;
-                DGV_Staff.DataSource = db.staff.ToList();
-            }
+            sef.ShowDialog();            
+            FillDGV();
         }
 
         private void Bt_add_Click(object sender, EventArgs e)
@@ -47,8 +50,7 @@ namespace Danilov_stadium
             staffEditForm sef = new staffEditForm(db);
             if (sef.ShowDialog() == DialogResult.OK)
             {
-                DGV_Staff.DataSource = null;
-                DGV_Staff.DataSource = db.staff.ToList();
+                FillDGV();
             }
         }
 
@@ -60,6 +62,30 @@ namespace Danilov_stadium
         private void StaffBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Bt_delete_Click(object sender, EventArgs e)
+        {
+            staff st = (staff)staffBindingSource.Current;
+            if (MessageBox.Show("Подтвердите удаление сотрудника "+st.last_name, "Выполняется удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                db.staff.Remove(st);
+                try
+                {
+                    db.SaveChanges();
+                    FillDGV();
+                }
+
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.InnerException.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void Bt_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
